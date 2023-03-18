@@ -1,0 +1,6 @@
+run = "cd frontend && npm run build && npm start"
+
+
+
+[nix]
+channel = "stable-22_11"
