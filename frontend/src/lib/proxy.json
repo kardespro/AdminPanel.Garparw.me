@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "host": "45.155.68.129",
+    "port": 8133,
+    "user": "mgsivsqa",
+    "password": "db1i98i8t4h3"
+  },
+  {
+    "id": "2",
+    "host": "188.74.210.207",
+    "port": 6286,
+    "user": "mgsivsqa",
+    "password": "db1i98i8t4h3"
+  },
+  {
+    "id": "3",
+    "host": "154.95.36.199",
+    "port": 6893,
+    "user": "mgsivsqa",
+    "password": "db1i98i8t4h3"
+  }
+]

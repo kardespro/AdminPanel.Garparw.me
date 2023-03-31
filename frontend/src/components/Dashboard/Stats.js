@@ -1,16 +1,36 @@
 import axios from 'axios'
 import { useState , useEffect } from 'react'
+import LibProxy from '../../lib/proxy.json'
 export default function Stats(){
   const [s,setS] = useState({})
   useEffect(() => {
-    (async() => {
-      try{
+    setTimeout(async() => {
+      let dProxy = window.localStorage.getItem("garparw-local")
+      if(!dProxy){
         let data = await axios.get("https://api.garparw.me/api/v1/stats")
         setS(data.data)
-      }catch(err){
-        console.log(`Garparw WebSocket Connection Error . reconnecting ws://ws.garparw.me:60 WebSocket Path: /useApplication?modules=gzip,gzip-nego,tgz&afterTRY=3000`)
       }
-    })()
+      if(dProxy){
+        let findNetwork = LibProxy.filter(a => a.id === `${dProxy}`)
+        
+          let data = await axios.get("https://api.garparw.me/api/v1/stats", {
+          proxy: {
+            protocol: "http",
+            host: findNetwork.host,
+            port: findNetwork.port,
+            auth : {
+              username: findNetwork.user,
+              password: findNetwork.password
+            }
+            
+          }
+        
+        
+        })
+        setS(data.data)
+        console.log(`Proxied Request`)
+      }
+    })
   })
   return(
     <>
